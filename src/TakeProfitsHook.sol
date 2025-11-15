@@ -41,6 +41,11 @@ contract TakeProfitsHook is BaseHook, ERC1155 {
         IPoolManager _manager,
         string memory _uri
     ) BaseHook(_manager) ERC1155(_uri) {}
+
+    mapping(PoolId poolId =>
+	mapping(int24 tickToSellAt =>
+		mapping(bool zeroForOne => uint256 inputAmount)))
+        	public pendingOrders;
  
 	// BaseHook Functions
     function getHookPermissions()
